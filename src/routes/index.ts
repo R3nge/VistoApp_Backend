@@ -1,4 +1,3 @@
-import managerRouter from "./managerRouter";
 import userRouter from "./userRouter";
 import permissionRouter from "./permissionRouter";
 import memberRouter from "./memberRouter";
@@ -12,4 +11,17 @@ import vinculoRouter from "./vinculoRouter";
 import vistoriadorRouter from "./vistoriadorRouter";
 import vistoriaRouter from "./vistoriaRouter";
 
-export { managerRouter, userRouter, permissionRouter, memberRouter, alugaRouter, comodoRouter , enderecoRouter, imovelRouter, inquilinoRouter, PropietarioRouter, vinculoRouter, vistoriadorRouter, vistoriaRouter };
+export {
+  userRouter,
+  permissionRouter,
+  memberRouter,
+  alugaRouter,
+  comodoRouter,
+  enderecoRouter,
+  imovelRouter,
+  inquilinoRouter,
+  PropietarioRouter,
+  vinculoRouter,
+  vistoriadorRouter,
+  vistoriaRouter,
+};
