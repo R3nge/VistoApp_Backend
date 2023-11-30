@@ -1,8 +1,20 @@
-require('dotenv').config();
+require("dotenv").config();
 import express from "express";
 import cors from "cors";
 import {
-  managerRouter, userRouter, permissionRouter, memberRouter, alugaRouter, comodoRouter , enderecoRouter, imovelRouter, inquilinoRouter, PropietarioRouter, vinculoRouter, vistoriadorRouter, vistoriaRouter
+  managerRouter,
+  userRouter,
+  permissionRouter,
+  memberRouter,
+  alugaRouter,
+  comodoRouter,
+  enderecoRouter,
+  imovelRouter,
+  inquilinoRouter,
+  PropietarioRouter,
+  vinculoRouter,
+  vistoriadorRouter,
+  vistoriaRouter,
 } from "./routes";
 
 const app = express();
@@ -22,7 +34,12 @@ app.use(vinculoRouter);
 app.use(vistoriadorRouter);
 app.use(vistoriaRouter);
 
-const port = 3308;
+const port = process.env.PORT || 3308;
+
+// Rota padrão para a raiz
+app.get("/", (req, res) => {
+  res.send("Hello, world!"); // INSERIR LOGICA PARA ROTA RAIZ
+});
 
 const start = (): void => {
   try {
