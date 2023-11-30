@@ -1,4 +1,3 @@
-import { userCreateSchema, userLoginSchema } from './userSchema';
-import { projectCreateSchema } from './managerSchema';
+import { userCreateSchema, userLoginSchema } from "./userSchema";
 
-export { userCreateSchema, userLoginSchema ,projectCreateSchema }
+export { userCreateSchema, userLoginSchema };
