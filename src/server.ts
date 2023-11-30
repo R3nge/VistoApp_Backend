@@ -12,7 +12,7 @@ import {
   PropietarioRouter,
   vinculoRouter,
   vistoriadorRouter,
-  vistoriaRouter,
+  // vistoriaRouter,
 } from "./routes";
 import { userCreateSchema, userLoginSchema } from "./schemas/userSchema";
 import userController from "./controller/userController";
@@ -32,7 +32,7 @@ app.use(inquilinoRouter);
 app.use(PropietarioRouter);
 app.use(vinculoRouter);
 app.use(vistoriadorRouter);
-app.use(vistoriaRouter);
+// app.use(vistoriaRouter);
 
 const port = process.env.PORT || 3308;
 

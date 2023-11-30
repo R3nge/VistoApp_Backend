@@ -8,7 +8,7 @@ import inquilinoRouter from "./InquilinoRouter";
 import PropietarioRouter from "./PropietarioRouter";
 import vinculoRouter from "./vinculoRouter";
 import vistoriadorRouter from "./vistoriadorRouter";
-import vistoriaRouter from "./vistoriaRouter";
+// import vistoriaRouter from "./vistoriaRouter";
 
 export {
   userRouter,
@@ -21,5 +21,5 @@ export {
   PropietarioRouter,
   vinculoRouter,
   vistoriadorRouter,
-  vistoriaRouter,
+  // vistoriaRouter,
 };
