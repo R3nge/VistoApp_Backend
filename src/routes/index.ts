@@ -1,6 +1,5 @@
 import userRouter from "./userRouter";
 import permissionRouter from "./permissionRouter";
-import memberRouter from "./memberRouter";
 import alugaRouter from "./alugaRouter";
 import comodoRouter from "./comodoRouter";
 import enderecoRouter from "./enderecoRouter";
@@ -14,7 +13,6 @@ import vistoriaRouter from "./vistoriaRouter";
 export {
   userRouter,
   permissionRouter,
-  memberRouter,
   alugaRouter,
   comodoRouter,
   enderecoRouter,
