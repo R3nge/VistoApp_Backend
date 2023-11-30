@@ -1,0 +1,215 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @unique @default(uuid())
+  type       Role     @default(User)
+  firstName  String
+  middleName String
+  lastName   String
+  email      String   @unique
+  password   String
+  birthDate  DateTime
+}
+
+enum Role {
+  Adm
+  User
+}
+
+enum MemberRole {
+  Front_End
+  Back_End
+  PO
+  QA
+}
+
+model Proprietario {
+  id         String    @id @unique @default(uuid())
+  cpf        String    @unique @db.VarChar(11)
+  name       String    @db.VarChar(50)
+  tel        Int
+  email      String    @unique
+  endereco   Endereco  @relation(fields: [enderecoId], references: [id])
+  enderecoId String
+  vinculo    Vinculo[]
+}
+
+model Vinculo {
+  id             String       @id @unique @default(uuid())
+  proprietario   Proprietario @relation(fields: [proprietarioId], references: [id])
+  imovel         Imovel       @relation(fields: [imovelId], references: [id])
+  imovelId       String
+  proprietarioId String
+}
+
+model Imovel {
+  id         String      @id @unique @default(uuid())
+  icm        String      @unique @db.VarChar(20)
+  tipo       Tipo_Imovel
+  endereco   Endereco    @relation(fields: [enderecoId], references: [id])
+  enderecoId String
+  vinculo    Vinculo[]
+  aluga      Aluga[]
+  comodo     Comodo[]
+  vistoria   Vistoria[]
+}
+
+model Aluga {
+  id          String    @id @unique @default(uuid())
+  inquilino   Inquilino @relation(fields: [inquilinoId], references: [id])
+  imovel      Imovel    @relation(fields: [imovelId], references: [id])
+  imovelId    String
+  inquilinoId String
+}
+
+model Inquilino {
+  id         String   @id @unique @default(uuid())
+  cpf        String   @unique @db.VarChar(11)
+  name       String
+  tel        Int
+  email      String   @unique
+  endereco   Endereco @relation(fields: [enderecoId], references: [id])
+  enderecoId String
+  aluga      Aluga[]
+}
+
+model Vistoriador {
+  id         String     @id @unique @default(uuid())
+  cpf        String     @unique @db.VarChar(11)
+  nome       String
+  tel        Int
+  email      String     @unique
+  endereco   Endereco   @relation(fields: [enderecoId], references: [id])
+  enderecoId String
+  vistoria   Vistoria[]
+}
+
+model Comodo {
+  id         String       @id @unique @default(uuid())
+  imovel     Imovel       @relation(fields: [imovelId], references: [id])
+  imovelId   String
+  tipo       Tipo_Comodo
+  numero     Int
+  componente Componente[]
+}
+
+model Componente {
+  id       String          @id @unique @default(uuid())
+  comodo   Comodo          @relation(fields: [comodoId], references: [id])
+  comodoId String
+  tipo     Tipo_Componente
+  obs      String
+  vistoria Vistoria[]
+  data     DateTime
+  cor      Cor
+  estado   Estado
+  material Material
+}
+
+model Endereco {
+  id           String         @id @unique @default(uuid())
+  rua          String
+  complemento  String
+  numero       Int
+  bairro       String
+  cidade       String
+  estado       String
+  cep          String
+  proprietario Proprietario[]
+  inquilino    Inquilino[]
+  imovel       Imovel[]
+  vistoriador  Vistoriador[]
+}
+
+model Vistoria {
+  id            String      @id @unique @default(uuid())
+  vistoria      Vistoriador @relation(fields: [vistoriadorId], references: [id])
+  vistoriadorId String
+  imovel        Imovel      @relation(fields: [imovelId], references: [id])
+  imovelId      String
+  componente    Componente  @relation(fields: [componenteId], references: [id])
+  componenteId  String
+  data          DateTime   @default(now())
+}
+
+enum Tipo_Imovel {
+  Casa
+  Apartamento
+  Terreno
+  Lote
+  Ponto
+  Rural
+}
+
+enum Tipo_Comodo {
+  Sala
+  Cozinha
+  Quarto
+  Banheiro
+  Servico
+  Sacada
+  Escada
+  Porao
+  Copa
+  Corredor
+  Garagem
+  Outro
+}
+
+enum Tipo_Componente {
+  Piso
+  Parede
+  Interruptor
+  Tomada
+  Teto
+  Rodape
+  Base
+  Porta
+  Janela
+  Macaneta
+  Fechadura
+  Item
+}
+
+enum Cor {
+  Branco
+  Preto
+  Cinza
+  Vermelho
+  Azul
+  Verde
+  Amarelo
+  Marrom
+  Laranja
+  Roxo
+  Rosa
+  Outro
+}
+
+enum Estado {
+  IP
+  IA
+  NP
+  NA
+  UP
+  UA 
+}
+
+enum Material {
+  Madeira
+  Alvenaria
+  Metal
+  Vidro
+  Outro
+}
+
