@@ -1,20 +1,15 @@
 {
-  "version": 2,
+  "devCommand": "npm run dev",
   "builds": [
     {
-      "src": "./index.ts",
+      "src": "src/server.ts",
       "use": "@vercel/node"
     }
   ],
-  "routes": [{ "handle": "filesystem" }, { "src": "/.*", "dest": "/index.ts" }],
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
-    },
-    {
-      "source": "/vercel_app_domain_name/(.*)",
-      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+      "src": "/(.*)",
+      "dest": "/src/server.ts"
     }
   ]
 }
