@@ -6,7 +6,7 @@ import InquilinoController from "./InquilinoController";
 import PermissionController from "./PermissionController";
 import PropietarioController from "./PropietarioController";
 import VinculoController from "./VinculoController";
-import VistoriaController from "./VistoriaController";
+// import VistoriaController from "./VistoriaController";
 import VistoriadorController from "./VistoriadorController";
 import userController from "./userController";
 
@@ -19,7 +19,7 @@ export {
   PermissionController,
   PropietarioController,
   VinculoController,
-  VistoriaController,
+  // VistoriaController,
   VistoriadorController,
   userController,
 };
