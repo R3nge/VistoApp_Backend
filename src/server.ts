@@ -14,6 +14,10 @@ import {
   vistoriadorRouter,
   vistoriaRouter,
 } from "./routes";
+import { userCreateSchema, userLoginSchema } from "./schemas/userSchema";
+import userController from "./controller/userController";
+import validate from "./middleware/zodMiddleware";
+import EnderecoController from "./controller/EnderecoController";
 
 const app = express();
 app.use(cors());
@@ -32,9 +36,14 @@ app.use(vistoriaRouter);
 
 const port = process.env.PORT || 3308;
 
-// Rota padrão para a raiz
-app.get("/", (req, res) => {
-  res.send("Hello, world!"); // INSERIR LOGICA PARA ROTA RAIZ
+// // Rota padrão para a raiz
+// app.get("/", (req, res) => {
+//   res.send("Hello, world!"); // INSERIR LOGICA PARA ROTA RAIZ
+// });
+
+// Rota padrao usuario
+app.get("/Endereco/PegarEnderecos", async (req, res) => {
+  EnderecoController.pegarEnderecos(req, res);
 });
 
 const start = (): void => {
