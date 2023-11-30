@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "engines": {
-    "node": "21.x"
+    "node": "18.x"
   },
   "scripts": {
     "start": "nodemon src/server.ts",
@@ -12,7 +12,8 @@
     "dev": "tsnd --exit-child --respawn --transpile-only --files src/server.ts",
     "database": "prisma migrate dev",
     "deploy": "vercel",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
