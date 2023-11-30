@@ -2,7 +2,7 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "engines": {
     "node": "18.x"
   },
@@ -11,7 +11,8 @@
     "build": "prisma generate && next build",
     "dev": "tsnd --exit-child --respawn --transpile-only --files src/server.ts",
     "database": "prisma migrate dev",
-    "deploy": "node server.ts"
+    "deploy": "node server.ts",
+    "prisma:generate": "prisma generate"
   },
   "keywords": [],
   "author": "",

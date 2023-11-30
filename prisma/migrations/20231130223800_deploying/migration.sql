@@ -1,68 +1,4 @@
 -- CreateTable
-CREATE TABLE `Task` (
-    `id` VARCHAR(191) NOT NULL,
-    `name` VARCHAR(191) NOT NULL,
-    `description` VARCHAR(191) NOT NULL,
-    `projectId` VARCHAR(191) NOT NULL,
-    `estimatedLength` INTEGER NOT NULL,
-
-    UNIQUE INDEX `Task_id_key`(`id`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `Manager` (
-    `id` VARCHAR(191) NOT NULL,
-    `userId` VARCHAR(191) NOT NULL,
-
-    UNIQUE INDEX `Manager_id_key`(`id`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `Project` (
-    `id` VARCHAR(191) NOT NULL,
-    `name` VARCHAR(191) NOT NULL,
-    `managerId` VARCHAR(191) NOT NULL,
-
-    UNIQUE INDEX `Project_id_key`(`id`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `Member_Project` (
-    `id` VARCHAR(191) NOT NULL,
-    `projectId` VARCHAR(191) NOT NULL,
-    `memberId` VARCHAR(191) NOT NULL,
-
-    UNIQUE INDEX `Member_Project_id_key`(`id`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `Member_Task` (
-    `id` VARCHAR(191) NOT NULL,
-    `taskType` VARCHAR(191) NOT NULL,
-    `taskId` VARCHAR(191) NOT NULL,
-    `memberId` VARCHAR(191) NOT NULL,
-    `projectId` VARCHAR(191) NOT NULL,
-
-    UNIQUE INDEX `Member_Task_id_key`(`id`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `Member` (
-    `id` VARCHAR(191) NOT NULL,
-    `userId` VARCHAR(191) NOT NULL,
-    `hourlyRate` INTEGER NOT NULL,
-    `memberRole` ENUM('Front_End', 'Back_End', 'PO', 'QA') NOT NULL,
-
-    UNIQUE INDEX `Member_id_key`(`id`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
 CREATE TABLE `User` (
     `id` VARCHAR(191) NOT NULL,
     `type` ENUM('Adm', 'User') NOT NULL DEFAULT 'User',
@@ -207,27 +143,6 @@ CREATE TABLE `Vistoria` (
     UNIQUE INDEX `Vistoria_id_key`(`id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- AddForeignKey
-ALTER TABLE `Task` ADD CONSTRAINT `Task_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Project` ADD CONSTRAINT `Project_managerId_fkey` FOREIGN KEY (`managerId`) REFERENCES `Manager`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Member_Project` ADD CONSTRAINT `Member_Project_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Member_Project` ADD CONSTRAINT `Member_Project_memberId_fkey` FOREIGN KEY (`memberId`) REFERENCES `Member`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Member_Task` ADD CONSTRAINT `Member_Task_taskId_fkey` FOREIGN KEY (`taskId`) REFERENCES `Task`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Member_Task` ADD CONSTRAINT `Member_Task_memberId_fkey` FOREIGN KEY (`memberId`) REFERENCES `Member`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Member_Task` ADD CONSTRAINT `Member_Task_projectId_fkey` FOREIGN KEY (`projectId`) REFERENCES `Project`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Proprietario` ADD CONSTRAINT `Proprietario_enderecoId_fkey` FOREIGN KEY (`enderecoId`) REFERENCES `Endereco`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
