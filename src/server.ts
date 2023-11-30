@@ -37,7 +37,7 @@ app.use(vistoriaRouter);
 const port = process.env.PORT || 3308;
 
 // Rota padrão para a raiz
-app.get("/", (req, res) => {
+app.get("/User", (req, res) => {
   res.send("Hello, world!"); // INSERIR LOGICA PARA ROTA RAIZ
 });
 
