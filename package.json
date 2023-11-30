@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "nodemon src/servidor.ts",
+    "build": "prisma generate && next build",
     "dev": "tsnd --exit-child --respawn --transpile-only --files src/servidor.ts",
     "database": "prisma migrate dev",
     "deploy": "node servidor.ts"

@@ -26,13 +26,6 @@ enum Role {
   User
 }
 
-enum MemberRole {
-  Front_End
-  Back_End
-  PO
-  QA
-}
-
 model Proprietario {
   id         String    @id @unique @default(uuid())
   cpf        String    @unique @db.VarChar(11)
