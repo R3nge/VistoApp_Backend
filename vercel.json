@@ -13,6 +13,6 @@
     }
   ],
   "env": {
-    "DATABASE_URL": "mysql://root:@localhost:3306/mydb?schema=public"
+    "DATABASE_URL": "mysql://root:3421@35.239.26.102/mydb?schema=public"
   }
 }
