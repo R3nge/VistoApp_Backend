@@ -1,7 +1,7 @@
 // controllers/imovel.controller.ts
 
 import { Request, Response } from "express";
-import { prisma } from "../../database/prisma";
+import { prisma } from "../database/prisma";
 
 export const criarImovelEAssociarInquilino = async (
   req: Request,

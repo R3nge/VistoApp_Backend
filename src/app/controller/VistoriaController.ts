@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../../database/prisma";
+import { prisma } from "../database/prisma";
 
 // Criar uma Vistoria
 export const criarVistoria = async (req: Request, res: Response) => {

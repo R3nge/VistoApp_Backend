@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../../database/prisma";
+import { prisma } from "../database/prisma";
 
 const criarEndereco = async (req: Request, res: Response) => {
   const { rua, complemento, numero, bairro, cidade, estado, cep } = req.body;

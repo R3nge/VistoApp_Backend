@@ -1,4 +1,4 @@
-import { prisma } from "../../database/prisma";
+import { prisma } from "../database/prisma";
 import { Request, Response } from "express";
 
 export const changePermission = async (req: Request, res: Response) => {
