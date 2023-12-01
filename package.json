@@ -11,7 +11,7 @@
     "dev": "tsnd --exit-child --respawn --transpile-only --files src/server.ts",
     "database": "prisma migrate dev",
     "deploy": "vercel",
-    "vercel-build": "prisma generate  && next build",
+    "vercel-build": "prisma generate && next build",
     "prisma:generate": "prisma generate"
   },
   "keywords": [],

@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "/src/app/server.ts"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "mysql://root:@localhost:3306/mydb?schema=public"
+  }
 }
