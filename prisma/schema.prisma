@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
- provider = "mysql"
- url      = "mysql://user:password@localhost:3306/mydb?schema=public"
-
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
