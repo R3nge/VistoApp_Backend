@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import jwt from "jsonwebtoken";
-import { PrismaClient, Role } from "@prisma/client";
+import { prisma } from "../database/prisma";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 
 const saltRounds = 10;
-const prisma = new PrismaClient();
 
 export const criarUsuario = async (req: Request, res: Response) => {
-  const { email, password, fullName, birthDate, type } = req.body || {};
+  const { email, password, fullName, birthDate, type, Role } = req.body || {};
 
   try {
     // Verifica se o usuário já existe
@@ -18,7 +17,9 @@ export const criarUsuario = async (req: Request, res: Response) => {
     });
 
     if (existingUser) {
-      return res.status(400).json({ success: false, message: "Usuário já existe." });
+      return res
+        .status(400)
+        .json({ success: false, message: "Usuário já existe." });
     }
 
     // Gera o hash da senha
@@ -53,7 +54,6 @@ export const criarUsuario = async (req: Request, res: Response) => {
   }
 };
 
-
 export const fazerLogin = async (req: Request, res: Response) => {
   const { email, password } = req.body || {};
 
@@ -68,7 +68,10 @@ export const fazerLogin = async (req: Request, res: Response) => {
     const match = await bcrypt.compare(password, String(login?.password));
 
     if (!login || !match) {
-      return res.status(400).json({ success: false, message: "Usuário não encontrado ou senha incorreta." });
+      return res.status(400).json({
+        success: false,
+        message: "Usuário não encontrado ou senha incorreta.",
+      });
     }
 
     // Gera o token JWT
@@ -76,7 +79,9 @@ export const fazerLogin = async (req: Request, res: Response) => {
 
     res.status(200).json({ jwt: `Bearer ${token}` });
   } catch (err) {
-    return res.status(400).json({ success: false, message: "Usuário incorreto." });
+    return res
+      .status(400)
+      .json({ success: false, message: "Usuário incorreto." });
   } finally {
     await prisma.$disconnect();
   }

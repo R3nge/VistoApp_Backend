@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../database/prisma";
 
-const prisma = new PrismaClient();
 export const criarProprietario = async (req: Request, res: Response) => {
   try {
     const { cpf, name, tel, email, enderecoId } = req.body;
@@ -107,7 +106,5 @@ const PropietarioController = {
   criarProprietario,
   pegarProprietarios,
   pegarUnicoProprietario,
-}
+};
 export default PropietarioController;
-
-

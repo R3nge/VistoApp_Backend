@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-import { Prisma, PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "../database/prisma";
 
 export const criarInquilino = async (req: Request, res: Response) => {
   try {
@@ -35,7 +33,9 @@ export const criarInquilino = async (req: Request, res: Response) => {
       });
 
       if (!endereco) {
-        errors.push("Endereço não encontrado para o ID fornecido: " + enderecoId);
+        errors.push(
+          "Endereço não encontrado para o ID fornecido: " + enderecoId
+        );
       }
     }
 
@@ -59,12 +59,6 @@ export const criarInquilino = async (req: Request, res: Response) => {
     return res.json(inquilino);
   } catch (error) {
     console.error("Erro ao criar Inquilino", error);
-
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      console.error("Erro Prisma:", error.message, error.code);
-    }
-
-    return res.status(500).json({ mensagem: "Erro ao criar Inquilino." });
   } finally {
     await prisma.$disconnect();
   }
@@ -116,14 +110,8 @@ function push(arg0: string) {
   throw new Error("Function not implemented.");
 }
 
-
 const InquilinoController = {
   criarInquilino,
   pegarInquilinos,
-}
+};
 export default InquilinoController;
-
-
-
-
-
