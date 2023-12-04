@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ComodoController, EnderecoController } from "../controller";
+import { EnderecoController } from "../controller";
 
 const router = Router();
 
