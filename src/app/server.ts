@@ -33,19 +33,23 @@ app.use(vinculoRouter);
 app.use(vistoriadorRouter);
 // app.use(vistoriaRouter);
 
-const port = process.env.PORT || 3308;
+app.get("/", (req, res) => {
+  res.send("Hello, world!");
+});
+
+// Rota padrao usuario
+app.get("/Endereco/PegarEnderecos", async (req, res) => {
+  console.log("DATABASE_URL:", process.env.DATABASE_URL);
+  await EnderecoController.pegarEnderecos(req, res);
+});
+
+// CONEXÃO COM BD
+
+const port = process.env.PORT || 8080;
 // // Rota padrão para a raiz
 // app.get("/", (req, res) => {
 //   res.send("Hello, world!"); // INSERIR LOGICA PARA ROTA RAIZ
 // });
-
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
-});
-// Rota padrao usuario
-app.get("/Endereco/PegarEnderecos", async (req, res) => {
-  await EnderecoController.pegarEnderecos(req, res);
-});
 
 const start = (): void => {
   try {
@@ -57,5 +61,4 @@ const start = (): void => {
     process.exit(1);
   }
 };
-
 start();
