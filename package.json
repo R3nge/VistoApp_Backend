@@ -4,13 +4,13 @@
   "description": "",
   "main": "src/app/server.ts",
   "engines": {
-    "node": "21.2.0"
+    "node": ">=20.9.0 <22.0.0"
   },
   "scripts": {
     "start": "nodemon src/app/server.ts",
     "dev": "tsnd --exit-child --respawn --transpile-only --files src/app/server.ts",
     "database": "prisma migrate dev",
-    "deploy": "vercel",
+    "deploy": "gcloud app deploy",
     "vercel-build": "prisma generate && next build",
     "prisma:generate": "prisma generate"
   },

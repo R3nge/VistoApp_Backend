@@ -1,0 +1,4 @@
+dispatch:
+  # Roteia todas as solicitações para o serviço padrão (seu aplicativo principal).
+  - url: "*/*"
+    service: default
