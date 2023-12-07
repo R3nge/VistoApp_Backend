@@ -1,5 +1,5 @@
 # Use a imagem do Node.js
-FROM node:14
+FROM node:21
 
 # Configurar o diretório de trabalho
 WORKDIR /usr/src/app
@@ -15,7 +15,7 @@ RUN yarn install --production
 COPY dist ./dist
 
 # Expor a porta que seu aplicativo está usando
-EXPOSE 8080
+EXPOSE 80
 
 # Comando para iniciar o aplicativo
 CMD ["node", "dist/app/server.js"]
