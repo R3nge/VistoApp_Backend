@@ -6,21 +6,21 @@ steps:
 
   # Construir a imagem Docker
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/cool-healer-390700/vistoimagem:$v1", "."]
+    args: ["build", "-t", "gcr.io/cool-healer-390700/vistoimagem:${_V1}", "."]
 
   # Empurrar a imagem Docker para o Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/cool-healer-390700/vistoimagem:$v1"]
+    args: ["push", "gcr.io/cool-healer-390700/vistoimagem:${_V1}"]
 
   # Implantar no App Engine
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       - "app"
       - "deploy"
-      - "--image=gcr.io/cool-healer-390700/vistoimagem:$v1"
-      - "--version=$v1"
+      - "--image=gcr.io/cool-healer-390700/vistoimagem:${_V1}"
+      - "--version=${_V1}"
       - "--project=cool-healer-390700"
       - "--quiet"
 
 images:
-  - "gcr.io/cool-healer-390700/vistoimagem:$v1"
+  - "gcr.io/cool-healer-390700/vistoimagem:${_V1}"
