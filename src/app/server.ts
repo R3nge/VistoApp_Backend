@@ -34,7 +34,7 @@ app.use(vistoriadorRouter);
 // app.use(vistoriaRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello, world!");
+  res.send("Ta rodandooo!");
 });
 
 // Rota padrao usuario
