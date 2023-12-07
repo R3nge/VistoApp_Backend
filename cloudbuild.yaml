@@ -1,26 +1,10 @@
 steps:
-  # Listar o conteúdo do diretório de trabalho (etapa inicial)
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "create-env"]
+    env:
+      - "MY_ENV_VAR=${_MY_ENV_VAR}"
   - name: "gcr.io/cloud-builders/gcloud"
-    entrypoint: "ls"
-    args: ["-la", "/workspace"]
-
-  # Construir a imagem Docker
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/cool-healer-390700/vistoimagem:v1", "."]
-
-  # Empurrar a imagem Docker para o Container Registry
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/cool-healer-390700/vistoimagem:v1"]
-
-  # Implantar no App Engine
-  - name: "gcr.io/cloud-builders/gcloud"
-    args:
-      - "app"
-      - "deploy"
-      - "--image=gcr.io/cool-healer-390700/vistoimagem:v1"
-      - "--version=v1"
-      - "--project=cool-healer-390700"
-      - "--quiet"
-
-images:
-  - "gcr.io/cool-healer-390700/vistoimagem:v1"
+    args: ["app", "deploy", "api.yaml", "-v", "$_GAE_VERSION"]
+timeout: "1600s"

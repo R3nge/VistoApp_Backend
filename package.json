@@ -12,7 +12,8 @@
     "database": "prisma migrate dev",
     "deploy": "gcloud app deploy",
     "vercel-build": "prisma generate && next build",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "create-env": "printenv > .env"
   },
   "keywords": [],
   "author": "",
