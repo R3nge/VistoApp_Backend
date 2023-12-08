@@ -10,7 +10,7 @@
     "start": "nodemon src/app/index.ts",
     "dev": "tsnd --exit-child --respawn --transpile-only --files src/app/index.ts",
     "database": "prisma migrate dev",
-    "vercel-build": "npx prisma migrate deploy",
+    "vercel-build": "npx prisma generate && npx prisma migrate deploy",
     "prisma:generate": "prisma generate"
   },
   "keywords": [],
