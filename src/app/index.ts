@@ -43,7 +43,7 @@ app.get("/Endereco/PegarEnderecos", async (req, res) => {
   await EnderecoController.pegarEnderecos(req, res);
 });
 
-const PORT = 3001;
+const PORT = 5432;
 
 const server = app.listen(PORT, () =>
   console.log(`Server is running on PORT: ${PORT}`)
