@@ -43,22 +43,4 @@ app.get("/Endereco/PegarEnderecos", async (req, res) => {
   await EnderecoController.pegarEnderecos(req, res);
 });
 
-// CONEXÃO COM BD
-
-const port = process.env.PORT || 8080;
-// // Rota padrão para a raiz
-// app.get("/", (req, res) => {
-//   res.send("Hello, world!"); // INSERIR LOGICA PARA ROTA RAIZ
-// });
-
-const start = (): void => {
-  try {
-    app.listen(port, () => {
-      console.log(`Server started on port ${port}`);
-    });
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
-};
-start();
+export default app;

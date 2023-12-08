@@ -2,18 +2,16 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app/server.ts",
+  "main": "src/app/index.ts",
   "engines": {
     "node": ">=20.9.0 <22.0.0"
   },
   "scripts": {
-    "start": "nodemon src/app/server.ts",
-    "dev": "tsnd --exit-child --respawn --transpile-only --files src/app/server.ts",
+    "start": "nodemon src/app/index.ts",
+    "dev": "tsnd --exit-child --respawn --transpile-only --files src/app/index.ts",
     "database": "prisma migrate dev",
-    "deploy": "gcloud app deploy",
     "vercel-build": "prisma generate && next build",
-    "prisma:generate": "prisma generate",
-    "create-env": "printenv > .env"
+    "prisma:generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
