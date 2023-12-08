@@ -15,9 +15,6 @@ import {
   vistoriadorRouter,
   // vistoriaRouter,
 } from "../routes";
-import { userCreateSchema, userLoginSchema } from "../schemas/userSchema";
-import validate from "../middleware/zodMiddleware";
-import EnderecoController from "../controller/EnderecoController";
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -37,11 +34,11 @@ app.get("/", (req, res) => {
   res.send("Ta rodandooo!");
 });
 
-// Rota padrao usuario
-app.get("/Endereco/PegarEnderecos", async (req, res) => {
-  console.log("DATABASE_URL:", process.env.DATABASE_URL);
-  await EnderecoController.pegarEnderecos(req, res);
-});
+// TESTE
+// app.get("/Endereco/PegarEnderecos", async (req, res) => {
+//   console.log("DATABASE_URL:", process.env.DATABASE_URL);
+//   await EnderecoController.pegarEnderecos(req, res);
+// });
 
 const PORT = 5432;
 

@@ -5,23 +5,23 @@ const userCreateSchema = z.object({
     .object({
       fullName: z
         .string({
-          required_error: "Full name is required.",
+          required_error: "O nome completo é obrigatório.",
         })
         .max(50)
         .min(5),
       password: z
         .string({
-          required_error: "Password is required.",
+          required_error: "A senha é obrigatória.",
         })
         .max(50)
         .min(5),
       confirmPassword: z.string({
-        required_error: "Confirm Password is required.",
+        required_error: "A confirmação de senha é obrigatória.",
       }),
       birthDate: z
         .string({
-          required_error: "Please select a date and time.",
-          invalid_type_error: "That's not a date!",
+          required_error: "Por favor, selecione uma data e hora.",
+          invalid_type_error: "Isso não é uma data!",
         })
         .pipe(z.coerce.date())
         .refine(
@@ -33,20 +33,20 @@ const userCreateSchema = z.object({
 
             return age >= 18;
           },
-          { message: "You must be 18 years or older" }
+          { message: "Você deve ter 18 anos ou mais" }
         ),
       email: z
         .string({
-          required_error: "Email is required.",
+          required_error: "O e-mail é obrigatório.",
         })
         .max(50)
-        .email("Not a valid email."),
+        .email("E-mail inválido."),
     })
     .superRefine(({ confirmPassword, password }, ctx) => {
       if (confirmPassword !== password) {
         ctx.addIssue({
           code: "custom",
-          message: "The passwords did not match.",
+          message: "As senhas não coincidiram.",
         });
       }
     }),
@@ -56,9 +56,9 @@ const userLoginSchema = z.object({
   body: z.object({
     email: z
       .string({
-        required_error: "Email is required.",
+        required_error: "O e-mail é obrigatório.",
       })
-      .email("Not a valid email."),
+      .email("E-mail inválido."),
   }),
 });
 

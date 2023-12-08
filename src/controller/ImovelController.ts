@@ -1,12 +1,7 @@
-// controllers/imovel.controller.ts
-
 import { Request, Response } from "express";
 import { prisma } from "../database/prisma";
 
-export const criarImovelEAssociarInquilino = async (
-  req: Request,
-  res: Response
-) => {
+export const criarImovel = async (req: Request, res: Response) => {
   const { icm, tipo, enderecoId } = req.body;
 
   if (!icm || !tipo || !enderecoId) {
@@ -26,7 +21,7 @@ export const criarImovelEAssociarInquilino = async (
         return res.status(404).json({ mensagem: "Endereço não encontrado" });
       }
 
-      // Cria o Imóvel no banco de dados e associa ao Endereco existente
+      // Cria o Imóvel no banco de dados e associa ao Endereço existente
       const imovel = await prisma.imovel.create({
         data: {
           icm,
@@ -39,23 +34,7 @@ export const criarImovelEAssociarInquilino = async (
         },
       });
 
-      // // Associa o Imóvel a um Inquilino usando o CPF do Inquilino
-      // const inquilino = await prisma.inquilino.update({
-      //   where: { cpf: inquilinoCpf },
-      //   data: {
-      //     aluga: {
-      //       create: {
-      //         imovel: {
-      //           connect: {
-      //             id: imovel.id,
-      //           },
-      //         },
-      //       },
-      //     },
-      //   },
-      // });
-
-      // Retorna o Imóvel criado e associado como resposta
+      // Retorna o Imóvel criado como resposta
       return res.json({ imovel });
     } catch (error) {
       console.error(error);
@@ -73,7 +52,7 @@ export const pegarImoveis = async (req: Request, res: Response) => {
 };
 
 const ImovelController = {
-  criarImovelEAssociarInquilino,
+  criarImovel,
   pegarImoveis,
 };
 
