@@ -10,11 +10,7 @@
     "database": "prisma migrate dev",
     "build": "npx prisma generate && npx prisma migrate deploy",
     "prisma:generate": "prisma generate",
-    "dev": "ts-node-dev --exit-child --respawn --transpile-only --files src/app/index.ts",
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "start": "ts-node-dev --exit-child --respawn --transpile-only --files src/app/index.ts"
   },
   "keywords": [],
   "author": "",
