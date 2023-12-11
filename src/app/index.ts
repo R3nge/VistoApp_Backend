@@ -14,7 +14,7 @@ import {
   vinculoRouter,
   vistoriadorRouter,
   // vistoriaRouter,
-} from "../routes";
+} from "../router";
 const app = express();
 app.use(cors());
 app.use(express.json());
