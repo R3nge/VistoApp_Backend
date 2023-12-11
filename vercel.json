@@ -7,10 +7,6 @@
     },
     {
       "src": "src/App.tsx",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "src/App.tsx",
       "use": "@vercel/static-build"
     }
   ],
