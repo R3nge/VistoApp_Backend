@@ -4,7 +4,7 @@ import { ImovelController } from "../controller";
 const router = Router();
 
 router.post("/Imovel/CreateImovelAssociado", async (req, res) => {
-  ImovelController.criarImovelEAssociarInquilino(req, res);
+  ImovelController.criarImovel(req, res);
 });
 
 router.get("/Imovel/PegarImoveis", async (req, res) => {
