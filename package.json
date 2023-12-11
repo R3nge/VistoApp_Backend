@@ -4,7 +4,7 @@
   "description": "",
   "main": "node_modules/expo/AppEntry.js",
   "engines": {
-    "node": "21.x"
+    "node": "18.x"
   },
   "scripts": {
     "database": "prisma migrate dev",
