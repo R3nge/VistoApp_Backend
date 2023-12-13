@@ -3,7 +3,7 @@ import { ImovelController } from "../controller";
 
 const router = Router();
 
-router.post("/Imovel/CreateImovelAssociado", async (req, res) => {
+router.post("/Imovel/createImovel", async (req, res) => {
   ImovelController.criarImovel(req, res);
 });
 
